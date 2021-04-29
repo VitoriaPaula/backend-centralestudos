@@ -1,0 +1,29 @@
+span {
+    margin-left: 1rem;
+}
+
+mat-icon {
+    height:25px;
+    width: 40px ;
+    font-size:40px;
+}
+
+.nav-bar{
+    min-height: 5rem;
+    background-color:rgba(8, 112, 189, 1);
+    color: white;
+}
+
+.mensagem-inicial h1{
+    font-size: 30px;
+    align-content: center;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.search-options {
+    min-height: 15rem;
+    background-color: rgba(225, 237, 252, 1);
+}

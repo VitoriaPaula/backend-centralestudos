@@ -1,0 +1,28 @@
+<mat-toolbar >
+    <mat-toolbar-row class="nav-bar">
+        <button mat-icon-button class="icone" (click)="onClickSearch()">
+            <mat-icon>search</mat-icon>
+        </button>
+        <span>CD </span>
+        <span class="example-spacer"></span>
+        <button mat-stroked-button class="" >
+            Login
+        </button>
+        <button mat-stroked-button class="" >
+            Register
+        </button>
+    </mat-toolbar-row >
+    <mat-toolbar-row *ngIf="esconder" class="search-options">
+        <div>
+            Imagem do cara sentado
+        </div>
+        <span class="example-spacer" ></span>
+        <div class="example-spacer mensagem-inicial">
+            <h1>Sejam bem-vindos a central de estudos!</h1>
+            <h5>Escolha seu curso abaixo</h5>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!esconder" class="search-options">
+        <p>Alo apertei</p>
+    </mat-toolbar-row>
+</mat-toolbar>
