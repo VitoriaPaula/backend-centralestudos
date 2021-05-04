@@ -1,0 +1,65 @@
+h1 {
+  text-align: center;
+}
+
+.courses {
+  padding: 40px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+img{
+  border-radius: 20px;
+  width: 300px;
+}
+
+.img {
+  align-self: center;
+  position: relative;
+  top: 30px;
+}
+
+.btn {
+  position: relative;
+  top: 10px;
+  width: 383px;
+  height: 35px;
+  background: #faf7f7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: rgb(228, 224, 224)
+}
+
+.block {
+  text-align: center;
+  font-weight: 500;
+  height: 450px;
+  width: 410px;
+  background-color: #F5F4F4;
+  border-radius: 30px;
+}
+
+.bottom-block {
+  position: relative;
+  top: 60px;
+  height: 150px;
+  width: 410px;
+  background-color: #E1EDFC;
+  border-radius: 30px;
+}
+
+.bottom-block p {
+  position: relative;
+  top: 30px;
+  text-align: center;
+  font-weight: 300;
+}
