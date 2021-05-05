@@ -16,7 +16,12 @@ mat-icon {
 
 .mensagem-inicial h1{
     font-size: 30px;
-    align-content: center;
+    letter-spacing: 3px;
+}
+
+.mensagem-inicial {
+    object-fit: scale-down;
+    text-align: center;
 }
 
 .example-spacer {
@@ -26,4 +31,13 @@ mat-icon {
 .search-options {
     min-height: 15rem;
     background-color: rgba(225, 237, 252, 1);
+}
+
+.img {
+    height: auto;
+    width: auto;
+    max-height: 220px;
+    max-width: 250px;
+    object-fit: scale-down;
+    padding-left: clamp(10px, 25vw, 100px);
 }
