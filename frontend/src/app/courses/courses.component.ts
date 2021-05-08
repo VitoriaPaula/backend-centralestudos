@@ -7,15 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  lado = true;
-
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
-  onClickSearch(): void {
-    this.lado = !this.lado;
+  ngOnInit(): void {
   }
 
 }
