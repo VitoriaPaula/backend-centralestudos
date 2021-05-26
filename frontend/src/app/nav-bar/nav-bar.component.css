@@ -1,43 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 span {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 mat-icon {
-    height:25px;
-    width: 40px ;
-    font-size:40px;
+  height: 25px;
+  width: 40px;
+  font-size: 40px;
 }
 
-.nav-bar{
-    min-height: 5rem;
-    background-color:rgba(8, 112, 189, 1);
-    color: white;
+.nav-bar {
+  min-height: 5rem;
+  background-color: rgba(8, 112, 189, 1);
+  color: white;
 }
 
-.mensagem-inicial h1{
-    font-size: 30px;
-    letter-spacing: 3px;
+.mensagem-inicial h1 {
+  font-size: 30px;
+  letter-spacing: 3px;
 }
 
 .mensagem-inicial {
-    object-fit: scale-down;
-    text-align: center;
+  display: inline-block;
+  text-align: center;
 }
 
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .search-options {
-    min-height: 15rem;
-    background-color: rgba(225, 237, 252, 1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-direction: row;
+  min-height: 17rem;
+  background-color: rgba(225, 237, 252, 1);
 }
 
 .img {
-    height: auto;
-    width: auto;
-    max-height: 220px;
-    max-width: 250px;
-    object-fit: scale-down;
-    padding-left: clamp(10px, 25vw, 100px);
+  height: auto;
+  width: auto;
+  max-height: 220px;
+  max-width: 250px;
+  display: inline;
+  padding-left: clamp(5px, 25vw, 100px);
+}
+
+
+.vertical-column {
+  width: 30.0%;
+  margin: 3.33%;
+  height: 90%;
+  flex-direction: column;
+}
+
+.left-side {
+  width: 40%;
+  height: 100%;
+  float: left;
+  margin: 1%;
+  flex-direction: column;
+}
+
+.right-side {
+  width: 40%;
+  height: 100%;
+  float: right;
+  margin: 1%;
+  flex-direction: column;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+.tituloFiltro {
+  font-family: 'Roboto', sans-serif;
+  color: #006ac2;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 16px;
+  letter-spacing: 2px;
 }

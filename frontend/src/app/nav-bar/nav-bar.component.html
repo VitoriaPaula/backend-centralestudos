@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar clas="header container">
     <mat-toolbar-row class="nav-bar">
         <button mat-icon-button class="icone" (click)="onClickSearch()">
             <mat-icon>search</mat-icon>
@@ -13,17 +13,62 @@
         </button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="esconder" class="container search-options">
-            <div class="">
+        <span class="example-spacer"></span>
+        <div class="">
             <img class="img" mat-card-image src="https://media-public.canva.com/K38cw/MADmdwK38cw/2/s.svg">
-            </div>
-            <span class="example-spacer"></span>
-            <div class="container example-spacer mensagem-inicial">
-                <h1><b>Sejam bem-vindos a central de estudos!</b></h1>
-                <h5>Escolha seu curso abaixo</h5>
-            </div>
-            <span class="example-spacer"></span>
+        </div>
+        <span class="example-spacer"></span>
+        <div class="container example-spacer mensagem-inicial">
+            <h1><b>Sejam bem-vindos a central de estudos!</b></h1>
+            <h5>Escolha seu curso abaixo</h5>
+        </div>
+        <span class="example-spacer"></span>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="!esconder" class="search-options">
-        <p>Alo apertei</p>
+        <div class="vertical-column">
+            <h1 class="tituloFiltro">Linguagens</h1>
+            <div class="left-side">
+                <p>Java</p>
+                <p>Python</p>
+                <p>PHP</p>
+                <p>Ruby</p>
+            </div>
+            <div class="right-side">
+                <p>C++</p>
+                <p>C</p>
+                <p>Javascript</p>
+                <p>Outros...</p>
+            </div>
+        </div>
+        <div class="vertical-column">
+            <h1 class="tituloFiltro">Categorias</h1>
+            <div class="left-side">
+                <p>Front-end</p>
+                <p>Back-end</p>
+                <p>Mobile</p>
+                <p>Database</p>
+            </div>
+            <div class="right-side">
+                <p>Devops</p>
+                <p>Cloud</p>
+                <p>Security</p>
+                <p>Outros...</p>
+            </div>
+        </div>
+        <div class="vertical-column">
+            <h1 class="tituloFiltro">Sites</h1>
+            <div class="left-side">
+                <p>Udemy</p>
+                <p>Coursera</p>
+                <p>Udemy</p>
+                <p>Coursera</p>
+            </div>
+            <div class="right-side">
+                <p>Udemy</p>
+                <p>Coursera</p>
+                <p>Udemy</p>
+                <p>Outros...</p>
+            </div>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
