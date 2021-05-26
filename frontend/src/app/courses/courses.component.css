@@ -8,12 +8,11 @@ h1 {
   padding-bottom: 20px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  gap: 75px;
+  gap: 70px;
   justify-content: center
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1280px) {
   .courses {
     display: flex;
     flex-direction: column;
@@ -35,8 +34,8 @@ img {
 
 .btn {
   position: relative;
-  top: 10px;
-  width: 383px;
+  top: 20px;
+  width: 363px;
   height: 35px;
   background: #faf7f7;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -53,7 +52,7 @@ img {
 .block {
   text-align: center;
   height: 450px;
-  width: 410px;
+  width: 370px;
   background-color: #F5F4F4;
   border-radius: 30px;
 }
@@ -69,9 +68,9 @@ img {
 
 .bottom-block {
   position: relative;
-  top: 60px;
+  top: 72px;
   height: 150px;
-  width: 410px;
+  width: 370px;
   background-color: #E1EDFC;
   border-radius: 30px;
 }

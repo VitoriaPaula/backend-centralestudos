@@ -13,12 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { CoursesComponent } from './courses/courses.component';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    CoursesComponent
+    CoursesComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
