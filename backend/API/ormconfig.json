@@ -1,0 +1,15 @@
+{
+    "type": "mysql",
+    "host": "freedb.tech",
+    "port": 3306,
+    "username": "freedbtech_guzta",
+    "password": "guzta",
+    "database": "freedbtech_central",
+    "synchronize": true,
+    "logging": false,
+    "migrations":["./src/database/migrations/**.ts"] ,
+    "entities": ["./src/models/**.ts"],
+    "cli":{
+        "migrationsDir":"./src/database/migrations"
+    }
+}
