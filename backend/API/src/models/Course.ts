@@ -21,6 +21,9 @@ class Course {
     @Column()
     DS_IDIOMA: string;
 
+    @Column()
+    DS_CATEGORIA: string;
+
     @CreateDateColumn()
     CREATED_AT: Date;
 
