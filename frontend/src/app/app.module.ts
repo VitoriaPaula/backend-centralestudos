@@ -1,3 +1,5 @@
+import { ClienteAlterarComponent } from './configuracoes-cliente/cliente-alterar/cliente-alterar.component';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 import { CourserService } from './courses/courses.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './routing.module';
@@ -15,14 +17,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
 import { CoursesComponent } from './courses/courses.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { ConfiguracoesClienteComponent } from './configuracoes-cliente/configuracoes-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    CoursesComponent
+    CoursesComponent,
+    LoginRegisterComponent,
+    ConfiguracoesClienteComponent,
+    ClienteAlterarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,10 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     MatGridListModule,
     MatTableModule,
     AppRoutingModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatInputModule
   ],
   providers: [CourserService],
   bootstrap: [AppComponent]

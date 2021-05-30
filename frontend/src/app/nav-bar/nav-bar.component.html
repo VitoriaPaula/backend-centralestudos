@@ -1,9 +1,11 @@
 <mat-toolbar>
     <mat-toolbar-row class="nav-bar">
-        <button mat-icon-button mat-button class="icone" (click)="onClickSearch()">
-            <mat-icon class="iconSearch">search</mat-icon>
-        </button>
-        <span>CD </span>
+        <div routerLink="/">
+            <button mat-icon-button mat-button class="icone" (click)="onClickSearch()">
+                <mat-icon class="iconSearch">search</mat-icon>
+            </button>
+            <span (click)="onClickHide()">CD </span>
+        </div>
         <span class="example-spacer"></span>
         <div>
             <div *ngIf="login">
@@ -22,7 +24,7 @@
                     <img mat-card-image class="imgIcon" src="./assets/LogoCheers.jpeg">
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item>
+                    <button mat-menu-item routerLink="/alterar" (click)="onClickHide()">
                         <mat-icon>settings</mat-icon>
                         Configurações
                     </button>
@@ -38,7 +40,7 @@
             </div>
         </div>
     </mat-toolbar-row>
-    <mat-toolbar-row *ngIf="esconder" class="search-options">
+    <mat-toolbar-row *ngIf="esconder && !config" class="search-options">
         <span class="example-spacer"></span>
         <div class="">
             <img class="img" mat-card-image src="https://media-public.canva.com/K38cw/MADmdwK38cw/2/s.svg">
@@ -50,7 +52,7 @@
         </div>
         <span class="example-spacer"></span>
     </mat-toolbar-row>
-    <mat-toolbar-row *ngIf="!esconder" class="search-options">
+    <mat-toolbar-row *ngIf="!esconder && !config"  class="search-options">
         <div class="vertical-column">
             <h1 class="tituloFiltro">Linguagens</h1>
             <div class="left-side">

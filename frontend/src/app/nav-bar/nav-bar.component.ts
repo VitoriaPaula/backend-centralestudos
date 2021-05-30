@@ -9,15 +9,21 @@ export class NavBarComponent implements OnInit {
 
   esconder = true;
   login = false;
+  config = false;
   nome = "Vitoria";
   
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   onClickSearch(): void {
     this.esconder = !this.esconder;
+  }
+
+  onClickHide(): void {
+    this.config = !this.config;
   }
 
 }
