@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   esconder = true;
-  displayedColumns = ['Linguagens', 'Categoria', 'Sites'];
-
+  login = false;
+  nome = "Vitoria";
+  
   constructor() { }
 
   ngOnInit(): void {

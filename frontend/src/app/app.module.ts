@@ -1,3 +1,6 @@
+import { CourserService } from './courses/courses.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { AppRoutingModule } from './routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
@@ -19,8 +22,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
   declarations: [
     AppComponent,
     NavBarComponent,
-    CoursesComponent,
-    LoginRegisterComponent
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +33,11 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     MatCardModule,
     MatDividerModule,
     MatGridListModule,
-    MatTableModule
+    MatTableModule,
+    AppRoutingModule,
+    MatMenuModule
   ],
-  providers: [],
+  providers: [CourserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,18 +1,44 @@
-<mat-toolbar clas="header container">
+<mat-toolbar>
     <mat-toolbar-row class="nav-bar">
-        <button mat-icon-button class="icone" (click)="onClickSearch()">
-            <mat-icon>search</mat-icon>
+        <button mat-icon-button mat-button class="icone" (click)="onClickSearch()">
+            <mat-icon class="iconSearch">search</mat-icon>
         </button>
         <span>CD </span>
         <span class="example-spacer"></span>
-        <button mat-stroked-button class="">
-            Login
-        </button>
-        <button mat-stroked-button class="">
-            Register
-        </button>
+        <div>
+            <div *ngIf="login">
+                <button mat-stroked-button class="">
+                    Login
+                </button>
+                <button mat-stroked-button class="">
+                    Register
+                </button>
+            </div>
+            <div *ngIf="!login" class="container">
+                <button mat-button [matMenuTriggerFor]="menu" class="">
+                    <span class="nameIcon">
+                        {{ nome }}
+                    </span>
+                    <img mat-card-image class="imgIcon" src="./assets/LogoCheers.jpeg">
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>settings</mat-icon>
+                        Configurações
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>history</mat-icon>
+                        Histórico
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>exit_to_app</mat-icon>
+                        Sair
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
     </mat-toolbar-row>
-    <mat-toolbar-row *ngIf="esconder" class="container search-options">
+    <mat-toolbar-row *ngIf="esconder" class="search-options">
         <span class="example-spacer"></span>
         <div class="">
             <img class="img" mat-card-image src="https://media-public.canva.com/K38cw/MADmdwK38cw/2/s.svg">
