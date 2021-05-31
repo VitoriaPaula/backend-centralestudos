@@ -24,6 +24,12 @@ class Course {
     @Column()
     DS_CATEGORIA: string;
 
+    @Column()
+    DS_SITE: string;
+
+    @Column()
+    DS_LINGUAGEM: string;
+
     @CreateDateColumn()
     CREATED_AT: Date;
 

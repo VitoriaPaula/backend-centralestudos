@@ -1,16 +1,20 @@
 import { getCustomRepository } from 'typeorm';
-import { Request, Response, response } from 'express';
+import { Request, Response, response, json } from 'express';
 import { CoursesRepository } from '../repositories/CourseRepository';
 class CourseController{
     
     async create(req: Request,res: Response){
         const { NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA } = req.body;
         
-        const courseReposotory = getCustomRepository(CoursesRepository);
+        const courseRepository = getCustomRepository(CoursesRepository);
 
-        const course = courseReposotory.create({NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA});
+        const nmt = NM_CURSO + "";
 
-        await courseReposotory.save(course);
+        console.log(nmt)
+        
+        const course = courseRepository.create({NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA});
+
+        await courseRepository.save(course);
 
         return res.status(201).json(course);
 
@@ -37,6 +41,24 @@ class CourseController{
         const courseFilterCategory = await courseRepository.find({where: { DS_CATEGORIA: categoria}});
         
         return res.json(courseFilterCategory);
+    }
+
+    async listFilterSite(req: Request,res: Response){
+        const { site } = req.body;
+
+        const courseRepository = getCustomRepository(CoursesRepository);
+        const courseFilterSite = await courseRepository.find({where: { DS_SITE: site}});
+        
+        return res.json(courseFilterSite);
+    }
+
+    async listFilterLanguage(req: Request,res: Response){
+        const { linguagem } = req.body;
+
+        const courseRepository = getCustomRepository(CoursesRepository);
+        const courseFilterLinguagem = await courseRepository.find({where: { DS_SITE: linguagem}});
+        
+        return res.json(courseFilterLinguagem);
     }
 
 
