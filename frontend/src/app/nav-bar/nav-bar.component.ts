@@ -8,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   esconder = true;
-  displayedColumns = ['Linguagens', 'Categoria', 'Sites'];
-
+  login = false;
+  config = false;
+  nome = "Vitoria";
+  
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   onClickSearch(): void {
     this.esconder = !this.esconder;
+  }
+
+  onClickHide(): void {
+    this.config = !this.config;
   }
 
 }
