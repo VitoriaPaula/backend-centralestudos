@@ -9,6 +9,7 @@ const userController = new UserController();
 const courseController = new CourseController();
 
 router.post("/usuario",userController.create);
+router.get("/usuario/id",userController.filterUserID);
 
 router.post("/curso",courseController.create);
 router.post("/cursos",courseController.createMany);
