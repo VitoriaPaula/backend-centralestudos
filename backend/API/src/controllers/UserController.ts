@@ -23,7 +23,14 @@ class UserController{
         await userRepository.save(user);
 
         return response.status(201).json(user);
-    }    
+    }
+    async filterUserID (request: Request,response: Response){
+        const userRepository = getCustomRepository(UsersRepository);
+        const cd_usuario =  request.body;
+        const user = userRepository.findOne({where: {cd_usuario: cd_usuario}})
+
+        return response.status(200).json(user);
+    }   
 }
 
 export { UserController };
