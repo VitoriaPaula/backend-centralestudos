@@ -1,5 +1,5 @@
-import { ConfiguracoesClienteComponent } from './configuracoes-cliente/configuracoes-cliente.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
+import { LoginRegisterComponent } from './clientes/login-register/login-register.component';
 import { CoursesComponent } from './courses/courses.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
