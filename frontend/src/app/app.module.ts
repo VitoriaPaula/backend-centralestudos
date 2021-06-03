@@ -1,5 +1,6 @@
-import { ClienteAlterarComponent } from './configuracoes-cliente/cliente-alterar/cliente-alterar.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { RegisterComponent } from './clientes/register/register.component';
+import { ClienteAlterarComponent } from './clientes/configuracoes-cliente/cliente-alterar/cliente-alterar.component';
+import { LoginComponent } from './clientes/login/login.component';
 import { CourserService } from './courses/courses.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './routing.module';
@@ -21,14 +22,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { CoursesComponent } from './courses/courses.component';
-import { ConfiguracoesClienteComponent } from './configuracoes-cliente/configuracoes-cliente.component';
+import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     CoursesComponent,
-    LoginRegisterComponent,
+    LoginComponent,
     ConfiguracoesClienteComponent,
     ClienteAlterarComponent
   ],
