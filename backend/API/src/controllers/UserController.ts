@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { getCustomRepository } from 'typeorm';
+import { getCustomRepository, UpdateQueryBuilder } from 'typeorm';
+import { User } from '../models/User';
 import { UsersRepository } from '../repositories/UsersRepository';
 
 class UserController{
@@ -19,18 +20,28 @@ class UserController{
         var CD_PERMISSAO = 1;
         const user = userRepository.create({ NM_USUARIO, DS_EMAIL,DS_CARGO,DT_NASCIMENTO,CD_PERMISSAO,PASS});
 
-
         await userRepository.save(user);
 
         return response.status(201).json(user);
     }
-    async filterUserID (request: Request,response: Response){
+    async filterUserID (req: Request,res: Response){
         const userRepository = getCustomRepository(UsersRepository);
-        const cd_usuario =  request.body;
-        const user = userRepository.findOne({where: {cd_usuario: cd_usuario}})
-
-        return response.status(200).json(user);
-    }   
+        const { cd_usuario } =  req.body;
+        const userFilter = await userRepository.find({where: {CD_USUARIO: cd_usuario}})
+        console.log(userFilter);
+        console.log(cd_usuario);
+        return res.json(userFilter);
+    }
+    async filterUserEmail (req: Request,res: Response){
+        const userRepository = getCustomRepository(UsersRepository);
+        const  { DS_EMAIL } =  req.body;
+        const userFilter = await userRepository.find(
+            {where: {DS_EMAIL: DS_EMAIL}}
+            );
+        console.log(userFilter);
+        console.log(DS_EMAIL);
+        return res.json(userFilter);
+    }     
 }
 
 export { UserController };
