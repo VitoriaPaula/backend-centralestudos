@@ -1,5 +1,6 @@
+import { RegisterComponent } from './clientes/register/register.component';
 import { ClienteAlterarComponent } from './clientes/configuracoes-cliente/cliente-alterar/cliente-alterar.component';
-import { LoginRegisterComponent } from './clientes/login-register/login-register.component';
+import { LoginComponent } from './clientes/login/login.component';
 import { CourserService } from './courses/courses.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './routing.module';
@@ -28,7 +29,7 @@ import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/
     AppComponent,
     NavBarComponent,
     CoursesComponent,
-    LoginRegisterComponent,
+    LoginComponent,
     ConfiguracoesClienteComponent,
     ClienteAlterarComponent
   ],
