@@ -21,8 +21,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { CoursesComponent } from './courses/courses.component';
 import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [CourserService],
   bootstrap: [AppComponent]
