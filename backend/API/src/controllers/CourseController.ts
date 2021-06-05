@@ -4,7 +4,7 @@ import { CoursesRepository } from '../repositories/CourseRepository';
 class CourseController{
     
     async create(req: Request,res: Response){
-        const { NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA } = req.body;
+        const { NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA,DS_SITE,DS_LINGUAGEM } = req.body;
         
         const courseRepository = getCustomRepository(CoursesRepository);
 
@@ -12,7 +12,7 @@ class CourseController{
 
         console.log(nmt)
         
-        const course = courseRepository.create({NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA});
+        const course = courseRepository.create({NM_CURSO,URL_CURSO,DS_CURSO,DS_DURACAO,DS_IDIOMA,DS_CATEGORIA,DS_SITE,DS_LINGUAGEM});
 
         await courseRepository.save(course);
 
