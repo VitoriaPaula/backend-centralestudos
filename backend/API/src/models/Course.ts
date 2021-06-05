@@ -12,7 +12,7 @@ class Course {
     @Column()
     URL_CURSO: string;
 
-    @Column()
+    @Column('text')
     DS_CURSO: string;
 
     @Column()

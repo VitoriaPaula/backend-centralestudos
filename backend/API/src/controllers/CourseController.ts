@@ -1,4 +1,4 @@
-import { getCustomRepository } from 'typeorm';
+import { createQueryBuilder, getConnection, getCustomRepository } from 'typeorm';
 import { Request, Response, response, json } from 'express';
 import { CoursesRepository } from '../repositories/CourseRepository';
 class CourseController{
@@ -56,11 +56,32 @@ class CourseController{
         const { linguagem } = req.body;
 
         const courseRepository = getCustomRepository(CoursesRepository);
-        const courseFilterLinguagem = await courseRepository.find({where: { DS_SITE: linguagem}});
+        const courseFilterLinguagem = await courseRepository.find({where: { DS_LINGUAGEM: linguagem}});
         
         return res.json(courseFilterLinguagem);
     }
 
+    async listFilter(req: Request,res: Response){
+        var { categoria, site , linguagem} = req.body;
+
+        if(categoria == "")
+        {
+            categoria = null;
+        }
+        if(site == "")
+        {
+            site = null;
+        }
+        if(linguagem == "")
+        {
+            linguagem = null;
+        }
+        const courseRepository = getCustomRepository(CoursesRepository);
+        const courses = await courseRepository.createQueryBuilder("courses").where("courses.DS_CATEGORIA = :DS_CATEGORIA",{DS_CATEGORIA:categoria}).orWhere("courses.DS_SITE = :DS_SITE",{DS_SITE:site}).orWhere("courses.DS_LINGUAGEM = :DS_LINGUAGEM",{DS_LINGUAGEM:linguagem}).getMany();
+        
+        return res.json(courses);
+
+    }
 
 }
 
