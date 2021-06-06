@@ -21,7 +21,7 @@ export class ClienteService {
     }
 
     loginCliente(email: string, password: string): Observable<Cliente> {
-        const data = { "email": email, "password": password };
+        const data = { "DS_EMAIL": email, "PASS": password };
         const params = new HttpParams().set("requestData", encodeURIComponent(JSON.stringify(data)));
         return this.httpClient.get<Cliente>(
             this.URLbase + "login", { params: params })
