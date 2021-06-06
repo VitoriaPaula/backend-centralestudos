@@ -1,16 +1,20 @@
+<app-nav-bar></app-nav-bar>
 <h4><b> Cursos mais procurados </b></h4>
-<div class="courses" *ngIf="cursos.length > 0">
-  <div class="block" *ngFor="let curso of cursos">
-    <h2> {{ curso.NM_CURSO }} </h2>
-    <div class="img">
-      <img
-        src="https://img-a.udemycdn.com/course/240x135/934680_158b_2.jpg?FfEZsfEiHoxVvDGeqTAMzUirGiOPNwY67Bm9sNfl4mZCx1QvSktUZeEYN8bDa9ysFVKByNXVCQp37R_u5o8F2tM4DCz3a9ZbvrfPoxpZpi_PS4HWTXmpOuo0hHnM">
+<mat-spinner *ngIf="estaCarregando"></mat-spinner>
+<mat-grid-list cols="3" class="courses" *ngIf="cursos.length > 0 && !estaCarregando">
+  <mat-grid-tile *ngFor="let curso of cursos">
+    <div class="block">
+      <h2> {{ curso.NM_CURSO }} </h2>
+      <div class="img">
+        <img
+          src="https://img-a.udemycdn.com/course/240x135/934680_158b_2.jpg?FfEZsfEiHoxVvDGeqTAMzUirGiOPNwY67Bm9sNfl4mZCx1QvSktUZeEYN8bDa9ysFVKByNXVCQp37R_u5o8F2tM4DCz3a9ZbvrfPoxpZpi_PS4HWTXmpOuo0hHnM">
+      </div>
+      <div class="bottom-block">
+        <p> {{ curso.DS_CURSO }} </p>
+      </div>
+      <button class="btn" name="acessar"><a href="{{curso.URL_CURSO}}">Visitar o Curso</a> </button>
     </div>
-    <div class="bottom-block">
-      <p> {{ curso.DS_CURSO }} </p>
-    </div>
-    <button class="btn" name="acessar"><a href="curso.URL_CURSO">Visitar o Curso</a> </button>
-  </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list>
 <mat-paginator *ngIf="cursos.length > 0" [length]="totalDeClientes" [pageSize]="totalDeClientesPorPagina"
   [pageSizeOptions]="opcoesTotalDeClientesPorPagina" (page)="onPaginaAlterada($event)"></mat-paginator>

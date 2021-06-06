@@ -22,17 +22,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { CoursesComponent } from './courses/courses.component';
 import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     CoursesComponent,
-    LoginComponent,
     ConfiguracoesClienteComponent,
     ClienteAlterarComponent
   ],
@@ -52,7 +54,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatInputModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    FormsModule
   ],
   providers: [CourserService],
   bootstrap: [AppComponent]
