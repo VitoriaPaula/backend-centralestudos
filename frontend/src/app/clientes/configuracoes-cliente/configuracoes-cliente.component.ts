@@ -1,3 +1,4 @@
+import { ClienteService } from './../cliente.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfiguracoesClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(public clienteService: ClienteService) { }
 
   ngOnInit(): void {
   }

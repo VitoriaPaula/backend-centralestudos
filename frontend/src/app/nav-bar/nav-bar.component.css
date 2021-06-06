@@ -76,7 +76,8 @@ span {
 
 .example-radio-group {
   display: grid;
-  width: fit-content;
+  align-items: center;
+  justify-content: center;
 }
 
 .left-side {

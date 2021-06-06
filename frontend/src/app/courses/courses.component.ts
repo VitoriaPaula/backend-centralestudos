@@ -9,9 +9,9 @@ import { Subscription, Observable } from 'rxjs';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
   cursos: Courses[] = [];
-  private cursosSubscription?: Subscription;
+  private cursosSubscription: Subscription;
   public estaCarregando = false;
   totalDeClientes: number = 0;
   totalDeClientesPorPagina: number = 2;
@@ -22,10 +22,17 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.estaCarregando = true;
-    this.courseService.getCourses().subscribe(courses => {
-      this.cursos = courses;
+    this.courseService.getCourses();
+    this.cursosSubscription = this.courseService
+    .getListaDeCursosAtualizadaObservable()
+    .subscribe((dados) => {
+      this.cursos = dados.courses;
       this.estaCarregando = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.cursosSubscription.unsubscribe();
   }
 
   onPaginaAlterada(dadosPagina: PageEvent) {
@@ -35,4 +42,15 @@ export class CoursesComponent implements OnInit {
     this.courseService.getCourses();
 
   }
+
+  ngCursosFiltrados(linguagem: string, categoria: string, site: string): void {
+    this.estaCarregando = true;
+    console.log("Chegou no Componente Cursos")
+    this.courseService.getCursosFiltrados(linguagem, categoria, site).subscribe(courses => {
+      this.cursos = courses;
+      console.log("Voltou do Cursos Service")
+      this.estaCarregando = false;
+    });
+  }
+
 }

@@ -1,6 +1,6 @@
+import { CoursesComponent } from './../courses/courses.component';
 import { CourserService } from './../courses/courses.service';
 import { Cliente } from './../clientes/cliente.module';
-import { EMPTY } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,18 +11,20 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   esconder = true;
-  login = true;
+  login = false;
   config = false;
-  nome = "Vitoria";
-  filtroLinguagem: string;
-  linguagens: string[]= ["Java", "Python", "C++", "C", "JavaScript"];
+  cliente: Cliente;
+  nome= "Vitoria";
+  filtroLinguagem: string = "";
+  linguagens: string[]= ["Java", "Python", "C++", "PHP", "JavaScript"];
   filtroCategoria: string = "";
+  categorias: string[] = ["Frontend", "Backend", "Cloud", "Mobile", "Security"];
   filtroSite: string = "";
+  sites: string[] = ["Udemy", "Microsoft"];
 
-  constructor(public courseService: CourserService) { }
+  constructor(public courseService: CourserService, private courseComponent: CoursesComponent) { }
 
   ngOnInit(): void {
-
   }
 
   onClickSearch(): void {
@@ -30,6 +32,10 @@ export class NavBarComponent implements OnInit {
       this.esconder = !this.esconder;
     } else {
       console.log(this.filtroLinguagem);
+      console.log(this.filtroCategoria);
+      console.log(this.filtroSite);
+
+      this.courseComponent.ngCursosFiltrados(this.filtroLinguagem, this.filtroCategoria, this.filtroSite);
     }
   }
 
@@ -38,21 +44,10 @@ export class NavBarComponent implements OnInit {
   }
 
   clienteLogado(cliente: Cliente): void {
-    this.nome = cliente.NM_USUARIO;
-    this.login = !this.login;
+    this.cliente = cliente;
+    this.login = false;
+    //window.localStorage.setItem(CLIENT_NAME, cliente.NM_USUARIO);
     //....
-  }
-
-  onClickLinguagem(): void {
-
-  }
-
-  onClickCategoria(): void {
-
-  }
-
-  onClickSite(): void {
-
   }
 
   isEmpty(str:string) {

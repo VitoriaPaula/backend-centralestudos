@@ -1,3 +1,4 @@
+import { ClienteService } from './clientes/cliente.service';
 import { RegisterComponent } from './clientes/register/register.component';
 import { ClienteAlterarComponent } from './clientes/configuracoes-cliente/cliente-alterar/cliente-alterar.component';
 import { LoginComponent } from './clientes/login/login.component';
@@ -23,7 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { CoursesComponent } from './courses/courses.component';
 import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
@@ -60,7 +61,8 @@ import { FormsModule } from '@angular/forms';
     MatRadioModule,
     FormsModule
   ],
-  providers: [CourserService],
+  providers: [CourserService,
+    ClienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

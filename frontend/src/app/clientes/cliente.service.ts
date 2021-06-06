@@ -8,6 +8,7 @@ import { EMPTY, Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ClienteService {
 
+    //URLbase: string = "35.238.193.110:3333/";
     URLbase: string = "http://localhost:3333/";
 
     constructor(private httpClient: HttpClient, private router: Router) { }
@@ -28,6 +29,5 @@ export class ClienteService {
             .pipe(
                 map(obj => obj)
             )
-
     }
 }
