@@ -1,6 +1,8 @@
 import { getCustomRepository } from "typeorm";
 import { Request, Response, response, json } from "express";
 import { CoursesRepository } from "../repositories/CourseRepository";
+import { Course } from "../models/Course";
+import { microsoftApiService } from "../services/microsoftApiService"
 class CourseController {
   async create(req: Request, res: Response) {
     const {
@@ -33,11 +35,25 @@ class CourseController {
   }
 
   createMany(req: Request, res: Response) {
-    const cursos = req.body;
+    let svc = new microsoftApiService();
+    const courseRepository = getCustomRepository(CoursesRepository);
+    let URL_CURSO: string;
 
-    return res.json(cursos);
+    console.log(svc);
+
+    svc.getCourses(async (course: Course) => {
+      URL_CURSO = course.URL_CURSO;
+      const courseAlreadyExists = await courseRepository.findOne({ URL_CURSO });
+
+      if (courseAlreadyExists) {
+        console.log("Course Already Exists");
+      } else {
+        await courseRepository.save(course);
+        console.log("curso criado");
+      }
+    });
+    return res.status(201);
   }
-
   async list(req: Request, res: Response) {
     const courseRepository = getCustomRepository(CoursesRepository);
     const allCourses = await courseRepository.find();

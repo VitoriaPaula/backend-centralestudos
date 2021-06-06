@@ -11,6 +11,7 @@ const courseController = new CourseController();
 router.post("/usuario",userController.create);
 router.get("/usuario/id",userController.filterUserID);
 router.get("/usuario/email",userController.filterUserEmail);
+router.get("/login",userController.validaLogin);
 
 router.post("/curso",courseController.create);
 router.post("/cursos",courseController.createMany);

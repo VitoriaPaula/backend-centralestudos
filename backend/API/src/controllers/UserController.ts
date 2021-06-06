@@ -41,7 +41,26 @@ class UserController{
         console.log(userFilter);
         console.log(DS_EMAIL);
         return res.json(userFilter);
-    }     
+    }
+    async validaLogin(req:Request,res:Response){
+        const userRepository = getCustomRepository(UsersRepository);
+        const  { DS_EMAIL,PASS } =  req.body;
+        
+        //const user = await userRepository.createQueryBuilder("users").where("users.DS_EMAIL = :DS_EMAIL", {DS_EMAIL: DS_EMAIL}).andWhere("users.PASS = :PASS", { PASS: PASS }).getOne();
+        const user = await userRepository.findOne({where: {DS_EMAIL: DS_EMAIL,PASS:PASS }})
+        console.log(user);
+
+        if(user)
+        {
+            return res.send(200).json(user)
+        }
+        else{
+            return res.send(404)
+        }
+      
+        
+    }
+    
 }
 
 export { UserController };
