@@ -48,17 +48,15 @@ class UserController{
         
         //const user = await userRepository.createQueryBuilder("users").where("users.DS_EMAIL = :DS_EMAIL", {DS_EMAIL: DS_EMAIL}).andWhere("users.PASS = :PASS", { PASS: PASS }).getOne();
         const user = await userRepository.findOne({where: {DS_EMAIL: DS_EMAIL,PASS:PASS }})
-        console.log(user);
+        //console.log(user);
 
         if(user)
         {
-            return res.send(200).json(user)
+            return res.json(user)
         }
         else{
-            return res.send(404)
-        }
-      
-        
+            return res.sendStatus(400)
+        }   
     }
     
 }
