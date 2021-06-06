@@ -20,5 +20,5 @@ router.get("/cursos",courseController.list);
 router.get("/cursos/categoria",courseController.listFilterCategory);
 router.get("/cursos/site",courseController.listFilterSite);
 router.get("/cursos/linguagem",courseController.listFilterLanguage);
-router.get("/cursos/filtro",courseController.listFilter);
+router.post("/cursos/filtro",courseController.listFilter);
 export { router }

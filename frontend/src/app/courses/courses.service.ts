@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CourserService {
@@ -15,36 +15,44 @@ export class CourserService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  getCourses(): Observable<Courses[]> {
+  getCourses(): Subscription {
     //const parametros = `?pagesize=${pagesize}&page=${page}`;
     return this.httpClient
       .get<Courses[]>(this.baseUrl + 'cursos')// + parametros)
       .pipe(
         map((dados) => {
-          this.courses = dados
-          this.listaCoursesAtualizada.next({
-            courses: [...this.courses]})
-          return dados
-        }));
+          return {
+            courses: dados
+          }}))
+      .subscribe((dados) => {
+        this.courses = dados.courses;
+        this.listaCoursesAtualizada.next({
+          courses: [...this.courses]
+        });
+        console.log(this.listaCoursesAtualizada)
+      });
   }
-
   getListaDeCursosAtualizadaObservable() {
     return this.listaCoursesAtualizada.asObservable();
   }
-
-  getCursosFiltrados(linguagem: string, categoria: string, site: string): Observable<Courses[]> {
-    const data = { "DS_CATEGORIA": categoria, "DS_SITE": site, "DS_LINGUAGEM": linguagem };
-    const params = new HttpParams().set("requestData", encodeURIComponent(JSON.stringify(data)));
-    console.log("Chegou no cursos service")
+  getCursosFiltrados(linguagem: string, categoria: string, site: string): Subscription {
+    const data = { "CATEGORIA": categoria, "SITE": site, "LINGUAGEM": linguagem };
+    // const params = encodeURIComponent(JSON.stringify(data));
+    // const url = `${this.baseUrl}cursos/filtro?data=${params}`
+    // console.log("Chegou no cursos service    " + url)
     return this.httpClient
-      .get<Courses[]>(this.baseUrl + "cursos/filtro", { params: params })
+      .post<Courses[]>(this.baseUrl+"cursos/filtro", data)
       .pipe(
         map((dados) => {
-          this.courses = dados;
-          this.listaCoursesAtualizada.next({
-            courses: [...this.courses]})
-          return dados
-        })
-      );
+          return {
+            courses: dados
+          }}))
+      .subscribe((dados) => {
+        this.courses = dados.courses;
+        this.listaCoursesAtualizada.next({
+          courses: [...this.courses]
+        });
+        console.log(this.listaCoursesAtualizada)
+      });
   }
 }

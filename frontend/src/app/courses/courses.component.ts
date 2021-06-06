@@ -27,6 +27,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     .getListaDeCursosAtualizadaObservable()
     .subscribe((dados) => {
       this.cursos = dados.courses;
+      console.log(this.cursos)
       this.estaCarregando = false;
     });
   }
@@ -46,9 +47,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
   ngCursosFiltrados(linguagem: string, categoria: string, site: string): void {
     this.estaCarregando = true;
     console.log("Chegou no Componente Cursos")
-    this.courseService.getCursosFiltrados(linguagem, categoria, site).subscribe(courses => {
-      this.cursos = courses;
-      console.log("Voltou do Cursos Service")
+    this.courseService.getCursosFiltrados(linguagem, categoria, site);
+    this.cursosSubscription = this.courseService
+    .getListaDeCursosAtualizadaObservable()
+    .subscribe((dados) => {
+      this.cursos = dados.courses;
+      console.log(this.cursos)
       this.estaCarregando = false;
     });
   }

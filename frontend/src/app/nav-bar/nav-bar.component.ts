@@ -18,9 +18,9 @@ export class NavBarComponent implements OnInit {
   filtroLinguagem: string = "";
   linguagens: string[]= ["Java", "Python", "C++", "PHP", "JavaScript"];
   filtroCategoria: string = "";
-  categorias: string[] = ["Frontend", "Backend", "Cloud", "Mobile", "Security"];
+  categorias: string[] = ["Frontend", "Backend", "Azure", "Mobile", "Security"];
   filtroSite: string = "";
-  sites: string[] = ["Udemy", "Microsoft"];
+  sites: string[] = ["Udemy", "Microsoft", "teste"];
 
   constructor(public courseService: CourserService, private courseComponent: CoursesComponent) { }
 
