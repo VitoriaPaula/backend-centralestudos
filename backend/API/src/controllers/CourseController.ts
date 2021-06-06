@@ -12,6 +12,7 @@ class CourseController {
       DS_DURACAO,
       DS_IDIOMA,
       DS_CATEGORIA,
+      DS_LINGUAGEM,
       URL_IMAGEM
     } = req.body;
 
@@ -28,6 +29,7 @@ class CourseController {
       DS_DURACAO,
       DS_IDIOMA,
       DS_CATEGORIA,
+      DS_LINGUAGEM,
       URL_IMAGEM
     });
 

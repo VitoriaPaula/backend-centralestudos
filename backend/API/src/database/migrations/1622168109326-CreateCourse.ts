@@ -45,6 +45,10 @@ export class CreateCourse1622168109326 implements MigrationInterface {
                         type:"varchar"
                     },
                     {
+                        name:"url_image",
+                        type:"varchar"
+                    },
+                    {
                         name:"CREATED_AT",
                         type:"timestamp",
                         default: "now()"
