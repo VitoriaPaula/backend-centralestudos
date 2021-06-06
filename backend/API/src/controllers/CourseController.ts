@@ -12,6 +12,7 @@ class CourseController {
       DS_DURACAO,
       DS_IDIOMA,
       DS_CATEGORIA,
+      URL_IMAGEM
     } = req.body;
 
     const courseRepository = getCustomRepository(CoursesRepository);
@@ -27,6 +28,7 @@ class CourseController {
       DS_DURACAO,
       DS_IDIOMA,
       DS_CATEGORIA,
+      URL_IMAGEM
     });
 
     await courseRepository.save(course);

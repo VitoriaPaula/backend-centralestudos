@@ -30,6 +30,9 @@ class Course {
   @Column()
   DS_LINGUAGEM: string;
 
+  @Column()
+  URL_IMAGEM: string;
+
   @CreateDateColumn()
   CREATED_AT: Date;
 
