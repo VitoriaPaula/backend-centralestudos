@@ -12,6 +12,7 @@ import { Subscription, Observable } from 'rxjs';
 export class CoursesComponent implements OnInit {
   cursos: Courses[] = [];
   private cursosSubscription?: Subscription;
+  public estaCarregando = false;
   totalDeClientes: number = 0;
   totalDeClientesPorPagina: number = 2;
   opcoesTotalDeClientesPorPagina = [2, 5, 10];
@@ -20,8 +21,10 @@ export class CoursesComponent implements OnInit {
   constructor(public courseService: CourserService) { }
 
   ngOnInit(): void {
+    this.estaCarregando = true;
     this.courseService.getCourses().subscribe(courses => {
       this.cursos = courses;
+      this.estaCarregando = false;
     });
   }
 
