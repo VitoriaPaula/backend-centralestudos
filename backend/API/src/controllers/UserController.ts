@@ -26,10 +26,10 @@ class UserController{
     }
     async filterUserID (req: Request,res: Response){
         const userRepository = getCustomRepository(UsersRepository);
-        const { cd_usuario } =  req.body;
-        const userFilter = await userRepository.find({where: {CD_USUARIO: cd_usuario}})
-        console.log(userFilter);
-        console.log(cd_usuario);
+        const { CD_USUARIO } =  req.body;
+        const userFilter = await userRepository.find({where: {CD_USUARIO: CD_USUARIO}})
+        //console.log(userFilter);
+        //console.log(CD_USUARIO);
         return res.json(userFilter);
     }
     async filterUserEmail (req: Request,res: Response){
@@ -38,8 +38,8 @@ class UserController{
         const userFilter = await userRepository.find(
             {where: {DS_EMAIL: DS_EMAIL}}
             );
-        console.log(userFilter);
-        console.log(DS_EMAIL);
+        //console.log(userFilter);
+        //console.log(DS_EMAIL);
         return res.json(userFilter);
     }
     async validaLogin(req:Request,res:Response){
