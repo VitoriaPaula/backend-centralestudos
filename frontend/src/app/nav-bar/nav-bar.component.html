@@ -4,15 +4,17 @@
             <button mat-icon-button mat-button class="icone" (click)="onClickSearch()">
                 <mat-icon class="iconSearch">search</mat-icon>
             </button>
-            <span (click)="onClickHide()">CD </span>
+            <span (click)="onClickHide()">
+                <img class="imgLogo" src="./assets/logoCentralEstudos.jpeg">
+            </span>
         </div>
         <span class="example-spacer"></span>
         <div>
             <div *ngIf="login">
-                <button mat-stroked-button class="">
+                <button mat-stroked-button routerLink="/login" class="">
                     Login
                 </button>
-                <button mat-stroked-button class="">
+                <button mat-stroked-button routerLink="/register" class="">
                     Register
                 </button>
             </div>

@@ -1,3 +1,8 @@
+.imgLogo {
+    width: 40%;
+    height: 35%;
+    margin-top: 30%;
+}
 
 .col-sm-5{
     text-align: center;
@@ -35,16 +40,12 @@ input[type=text], input[type=password], input[type=date], input[type=email]{
 }
 
 .right{
-    margin-top: 20%;
+    margin-top: 30px;
     margin-bottom: 10%;
     margin-right: 5% ;
     margin-left: 8%;
     font-weight: 425;
     
-}
-
-img{
-    margin-top: 45%; ;
 }
 
 h1{

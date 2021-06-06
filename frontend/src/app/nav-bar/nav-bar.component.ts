@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   esconder = true;
-  login = false;
+  login = true;
   config = false;
   cliente: Cliente;
   nome= "Vitoria";
