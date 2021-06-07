@@ -1,12 +1,15 @@
 import { Router } from "express";
 import { CourseController } from "./controllers/CourseController";
+import { SendEmailController } from "./controllers/SendEmailController";
 import { UserController } from "./controllers/UserController";
+import sendEmail from "./services/sendEmail";
 
 
 const router = Router();
 
 const userController = new UserController();
 const courseController = new CourseController();
+const sendEmailController = new SendEmailController();
 
 router.post("/usuario",userController.create);
 router.get("/usuario/id",userController.filterUserID);
@@ -22,4 +25,7 @@ router.get("/cursos/site",courseController.listFilterSite);
 router.get("/cursos/linguagem",courseController.listFilterLanguage);
 
 router.post("/cursos/filtro",courseController.listFilter);
+
+router.post("/email",sendEmailController.exec);
+
 export { router }
