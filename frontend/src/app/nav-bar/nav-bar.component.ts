@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CoursesComponent } from './../courses/courses.component';
 import { CourserService } from './../courses/courses.service';
 import { Cliente } from './../clientes/cliente.module';
@@ -13,18 +14,35 @@ export class NavBarComponent implements OnInit {
   esconder = true;
   login = true;
   config = false;
-  cliente: Cliente;
-  nome= "Vitoria";
+  cliente: Cliente | null;
   filtroLinguagem: string = "";
   linguagens: string[]= ["Java", "Python", "C++", "PHP", "JavaScript"];
   filtroCategoria: string = "";
   categorias: string[] = ["Frontend", "Backend", "Azure", "Mobile", "Security"];
   filtroSite: string = "";
-  sites: string[] = ["Udemy", "Microsoft", "teste"];
+  sites: string[] = ["Udemy", "Microsoft"];
 
-  constructor(public courseService: CourserService, private courseComponent: CoursesComponent) { }
+  constructor(public courseService: CourserService,
+     private courseComponent: CoursesComponent,
+     private router: Router) { }
 
   ngOnInit(): void {
+    const nome = window.localStorage.getItem("NM_USUARIO");
+    if(nome == undefined || nome === null ){
+      this.login = true;
+    }else {
+      console.log(nome);
+      this.login = false;
+      this.cliente = {
+        CD_USUARIO: window.localStorage.getItem("CD_USUARIO"),
+        NM_USUARIO: window.localStorage.getItem("NM_USUARIO"),
+        CD_PERMISSAO: parseInt(window.localStorage.getItem("CD_PERMISSAO")),
+        DS_CARGO: window.localStorage.getItem("DS_CARGO"),
+        DS_EMAIL: window.localStorage.getItem("DS_EMAIL"),
+        DT_NASCIMENTO: new Date(window.localStorage.getItem("DT_NASCIMENTO")),
+        PASS: window.localStorage.getItem("PASS")
+      }
+    }
   }
 
   onClickSearch(): void {
@@ -43,15 +61,21 @@ export class NavBarComponent implements OnInit {
     this.config = !this.config;
   }
 
-  clienteLogado(cliente: Cliente): void {
-    this.cliente = cliente;
-    this.login = false;
-    //window.localStorage.setItem(CLIENT_NAME, cliente.NM_USUARIO);
-    //....
-  }
-
   isEmpty(str:string) {
     return (!str || str.length === 0 );
+}
+
+removeToken() {
+  window.localStorage.removeItem("CD_USUARIO");
+  window.localStorage.removeItem("NM_USUARIO");
+  window.localStorage.removeItem("CD_PERMISSAO");
+  window.localStorage.removeItem("DS_CARGO");
+  window.localStorage.removeItem("DS_EMAIL");
+  window.localStorage.removeItem("DT_NASCIMENTO");
+  window.localStorage.removeItem("PASS");
+
+  this.router.navigate(['/']);
+  this.login = true;
 }
 
 }

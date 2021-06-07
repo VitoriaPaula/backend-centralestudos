@@ -1,0 +1,35 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-5">
+      <img class="imgLogo" src="./assets/logoCentralEstudos.jpeg">
+      <h3> Central de Estudos </h3>
+    </div>
+
+    <div class="col-sm-7">
+      
+      <div class="right">
+        <h1>Login</h1>
+      <mat-card >
+        <mat-spinner *ngIf="estaCarregando"></mat-spinner>
+        <form [formGroup]="form" (submit)="onLoginCliente()" *ngIf="!estaCarregando">
+          <mat-form-field>
+            <input type="text" matInput placeholder="email" name="email" formControlName="email" />
+            <mat-error *ngIf="form.get('email').invalid">Digite um email válido</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="password" matInput placeholder="password" name="password" formControlName="password" />
+          </mat-form-field>
+          <button color="primary" mat-raised-button type="submit">
+            Login
+          </button>
+          <span class="span"></span>
+          <button color="warn" routerLink="/register" mat-raised-button>
+            Register
+          </button>
+        </form>
+      </mat-card>
+    </div>
+    </div>
+  </div>
+</div>
