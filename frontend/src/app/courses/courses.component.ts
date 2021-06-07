@@ -10,6 +10,7 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit, OnDestroy {
+  breakpoint: number;
   cursos: Courses[] = [];
   private cursosSubscription: Subscription;
   public estaCarregando = false;
@@ -21,6 +22,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
   constructor(public courseService: CourserService) { }
 
   ngOnInit(): void {
+
+    this.breakpoint = (window.innerWidth <= 1200) ? 1 : 3;
+
     this.estaCarregando = true;
     this.courseService.getCourses();
     this.cursosSubscription = this.courseService
@@ -30,6 +34,11 @@ export class CoursesComponent implements OnInit, OnDestroy {
       console.log(this.cursos)
       this.estaCarregando = false;
     });
+  }
+
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 1200) ? 1 : 3;
+
   }
 
   ngOnDestroy(): void {

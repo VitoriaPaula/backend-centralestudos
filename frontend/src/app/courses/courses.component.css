@@ -8,23 +8,8 @@ mat-spinner {
   margin: auto;
 }
 
-.courses {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  flex-direction: row;
-  gap: 70px;
-  justify-content: center
-}
 
-@media (max-width: 1280px) {
-  .courses {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-  }
-}
+
 
 img {
   border-radius: 20px;
@@ -36,6 +21,8 @@ img {
   position: relative;
   top: 30px;
 }
+
+
 
 .btn {
   position: relative;
