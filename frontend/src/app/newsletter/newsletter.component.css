@@ -1,0 +1,20 @@
+.example-chip-list {
+  width: 100%;
+}
+
+/* mat-card-content {
+      height: 100%;
+      width: 100%;
+  } */
+
+h1 {
+  color: #656565;
+}
+
+h5 {
+    padding-bottom: 5px;
+}
+
+.example-section {
+    padding-top: 5px;
+}

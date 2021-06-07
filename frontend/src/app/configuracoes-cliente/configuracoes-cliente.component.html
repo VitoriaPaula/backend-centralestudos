@@ -1,0 +1,26 @@
+<mat-toolbar class="mat-elevation-z6">
+    <mat-toolbar-row class="nav-bar">
+        <div routerLink="/">
+            <button mat-icon-button mat-button class="icone">
+                <mat-icon class="iconSearch">search</mat-icon>
+            </button>
+            <span>
+                <img class="imgLogo" src="./assets/LogoCentralEstudos2.png">
+            </span>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="">
+    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
+        <div></div>
+        <img mat-card-image class="avatar" src="./assets/LogoCheers.jpeg">
+        <h3>{{ nome }}</h3>
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/">Voltar</a>
+            <a mat-list-item routerLink="/newsletter">Newsletter</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <app-newsletter></app-newsletter>
+    </mat-sidenav-content>
+</mat-sidenav-container>

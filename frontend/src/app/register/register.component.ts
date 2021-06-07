@@ -45,12 +45,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSalvarCliente() {
-    console.log("Entrou no salvar cliente")
     if (this.form.invalid) {
-      console.log("ENTROU no form invalido")
       return;
     }
-    console.log("Passou do form invalido")
     this.estaCarregando = true;
     this.cliente = {
       NM_USUARIO: this.form.value.nome,

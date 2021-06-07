@@ -14,11 +14,12 @@ export class NavBarComponent implements OnInit {
   esconder = true;
   login = true;
   config = false;
+  radioValue = true;
   cliente: Cliente | null;
   filtroLinguagem: string = "";
-  linguagens: string[]= ["Java", "Python", "C++", "PHP", "JavaScript"];
+  linguagens: string[]= ["Java", "Python", "C++", "Vuejs", "Angular"];
   filtroCategoria: string = "";
-  categorias: string[] = ["Frontend", "Backend", "Azure", "Mobile", "Security"];
+  categorias: string[] = ["Frontend", "Backend", "Azure", "Mobile", "Arduino"];
   filtroSite: string = "";
   sites: string[] = ["Udemy", "Microsoft", "Cod3r"];
 
@@ -46,6 +47,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onClickSearch(): void {
+    this.radioValue = !this.radioValue;
     if (this.isEmpty(this.filtroLinguagem) && this.isEmpty(this.filtroCategoria) && this.isEmpty(this.filtroSite)) {
       this.esconder = !this.esconder;
     } else {

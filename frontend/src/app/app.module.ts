@@ -1,6 +1,6 @@
 import { ClienteService } from './clientes/cliente.service';
 import { RegisterComponent } from './register/register.component';
-import { ClienteAlterarComponent } from './clientes/configuracoes-cliente/cliente-alterar/cliente-alterar.component';
+import { ClienteAlterarComponent } from './cliente-alterar/cliente-alterar.component';
 import { LoginComponent } from './login/login.component';
 import { CourserService } from './courses/courses.service';
 import { AppRoutingModule } from './routing.module';
@@ -27,11 +27,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { CoursesComponent } from './courses/courses.component';
-import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
+import { ConfiguracoesClienteComponent } from './configuracoes-cliente/configuracoes-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CoursesComponent,
     ConfiguracoesClienteComponent,
     ClienteAlterarComponent,
-    RegisterComponent
+    RegisterComponent,
+    NewsletterComponent
   ],
   imports: [
     BrowserModule,
@@ -66,10 +71,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [CourserService,
-    ClienteService],
+    ClienteService,
+    CoursesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

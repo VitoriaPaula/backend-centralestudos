@@ -1,0 +1,32 @@
+<mat-card class="">
+    <mat-spinner *ngIf="estaCarregando"></mat-spinner>
+    <mat-card-content>
+        <h1>Newsletter</h1>
+        <section class="example-section" [formGroup]="categorias">
+            <h5>Selecione as categorias de seu interesse:</h5>
+            <p>
+                <mat-checkbox formControlName="backend">
+                    Backend
+                </mat-checkbox>
+            </p>
+            <p>
+                <mat-checkbox formControlName="frontend">
+                    Frontend
+                </mat-checkbox>
+            </p>
+            <p>
+                <mat-checkbox formControlName="azure">
+                    Azure
+                </mat-checkbox>
+            </p>
+            <p>
+                <mat-checkbox formControlName="other">
+                    Other
+                </mat-checkbox>
+            </p>
+        </section>
+        <button color="primary" (click)="selecionaCategoria()" mat-raised-button>
+            Salvar
+          </button>
+    </mat-card-content>
+</mat-card>
