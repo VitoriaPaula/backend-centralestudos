@@ -64,6 +64,10 @@ span {
   height: 50px;
 }
 
+.iconButton {
+  width: fit-content;
+}
+
 .nameIcon {
   padding-right: 10%;
 }
@@ -75,31 +79,10 @@ span {
   flex-direction: column;
 }
 
-.teste {
-  width: 30%;
-  height: auto;
-}
-
 .example-radio-group {
   display: grid;
   align-items: center;
   justify-content: center;
-}
-
-.left-side {
-  width: 40%;
-  height: 100%;
-  float: left;
-  margin: 1%;
-  flex-direction: column;
-}
-
-.right-side {
-  width: 40%;
-  height: 100%;
-  float: right;
-  margin: 1%;
-  flex-direction: column;
 }
 
 p {

@@ -19,10 +19,11 @@
                 </button>
             </div>
             <div *ngIf="!login" class="container">
-                <button mat-button [matMenuTriggerFor]="menu" class="">
+                <button mat-button [matMenuTriggerFor]="menu">
                     <span class="nameIcon">
-                        {{ nome }}
+                        {{ cliente.NM_USUARIO }}
                     </span>
+                    <span weidth="2px"></span>
                     <img mat-card-image class="imgIcon" src="./assets/LogoCheers.jpeg">
                 </button>
                 <mat-menu #menu="matMenu">
@@ -34,7 +35,7 @@
                         <mat-icon>history</mat-icon>
                         Histórico
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="removeToken()">
                         <mat-icon>exit_to_app</mat-icon>
                         Sair
                     </button>

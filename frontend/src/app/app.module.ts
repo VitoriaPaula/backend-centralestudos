@@ -1,9 +1,8 @@
 import { ClienteService } from './clientes/cliente.service';
 import { RegisterComponent } from './clientes/register/register.component';
 import { ClienteAlterarComponent } from './clientes/configuracoes-cliente/cliente-alterar/cliente-alterar.component';
-import { LoginComponent } from './clientes/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { CourserService } from './courses/courses.service';
-import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
@@ -14,6 +13,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,15 +25,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { CoursesComponent } from './courses/courses.component';
 import { ConfiguracoesClienteComponent } from './clientes/configuracoes-cliente/configuracoes-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     NavBarComponent,
     CoursesComponent,
     ConfiguracoesClienteComponent,
@@ -59,7 +62,10 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [CourserService,
     ClienteService],
