@@ -8,4 +8,5 @@ export interface Courses {
     DS_CATEGORIA: string;
     DS_SITE: string;
     DS_LINGUAGEM: string;
+    URL_IMAGEM: string;
 }

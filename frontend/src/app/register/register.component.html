@@ -1,0 +1,58 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-5">
+      <img class="imgLogo" src="./assets/logoCentralEstudos.jpeg">
+      <h3> Central de Estudos </h3>
+    </div>
+
+    <div class="col-sm-7">
+      <div class="right">
+        <mat-card>
+          <mat-spinner *ngIf="estaCarregando"></mat-spinner>
+          <h1>Cadastre-se agora mesmo!</h1>
+          <form [formGroup]="form" (submit)="onSalvarCliente()" *ngIf="!estaCarregando">
+            <mat-form-field>
+              <input type="text" matInput placeholder="Nome completo" name="nome" formControlName="nome" />
+              <mat-error *ngIf="form.get('nome').invalid">Digite um nome válido</mat-error>
+            </mat-form-field>
+            <!-- <div>
+              <button mat-stroked-button type="button" (click)="selecionaArquivo.click()">Selecionar Imagem</button>
+              <input type="file" (change)="onImagemSelecionar($event)" #selecionaArquivo>
+            </div>
+            <div class="imagem-preview">
+              <img src="previewImagem" *ngIf="previewImagem && previewImagem !== '' && form.get('imagem').valid"
+                [alt]="form.value.nome">
+            </div> -->
+            <mat-form-field>
+              <input type="date" matInput placeholder="Data Nascimento " name="dataNascimento"
+                formControlName="dataNascimento" />
+              <mat-error *ngIf="form.get('dataNascimento').invalid">Digite uma Data de Nascimento válida</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Cargo" name="cargo" formControlName="cargo" />
+              <mat-error *ngIf="form.get('cargo').invalid">Digite um cargo válido</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Email" name="email" formControlName="email" />
+              <mat-error *ngIf="form.get('email').invalid">Digite um nome válido</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Senha" name="password" formControlName="password" />
+              <mat-error *ngIf="form.get('password').invalid">Digite uma senha válida</mat-error>
+            </mat-form-field>
+            <button color="primary" type="submit" mat-raised-button>
+              Register
+            </button>
+            <button color="warn" mat-raised-button>
+              Cancel
+            </button>
+            <span class="example-spacer"></span>
+            <button color="accent" class="loginButton" routerLink="/login" mat-raised-button>
+              Login
+            </button>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>

@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/'])
       }
     })
-    this.form.reset();
     this.estaCarregando = false
   }
 

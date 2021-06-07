@@ -20,11 +20,10 @@ export class ClienteService {
         return this.httpClient.post<Cliente>(
             this.URLbase + "usuario", cliente
         ).pipe(
-            map(obj => obj)
+            map(obj => obj),
+            catchError(e => this.errorHandler(e, "Usuário já existente!"))
         )
     }
-
-
 
     //Mandar DS_EMAIL e PASS, 
     loginCliente(email: string, password: string): Observable<Cliente> {
@@ -32,11 +31,11 @@ export class ClienteService {
         return this.httpClient.post<Cliente>(
             this.URLbase + "login", data)
             .pipe(map(obj => obj),
-                catchError(e => this.errorHandler(e)))
+                catchError(e => this.errorHandler(e, "Login Inválido")))
     }
 
-    errorHandler(e: any): Observable<any> {
-        this.showMessage('Login Inválido', true)
+    errorHandler(e: any, msg: string): Observable<any> {
+        this.showMessage(msg, true)
         return EMPTY
     }
 

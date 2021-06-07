@@ -59,7 +59,9 @@
         <div class="vertical-column">
             <h1 class="tituloFiltro">Linguagens</h1>
             <mat-radio-group class="example-radio-group" [(ngModel)]="filtroLinguagem">
-                <mat-radio-button class="example-radio-button" [value]="linguagem" *ngFor="let linguagem of linguagens">
+                <mat-radio-button class="example-radio-button"
+                 [value]="linguagem"
+                  *ngFor="let linguagem of linguagens">
                     {{linguagem}}
                 </mat-radio-button>
             </mat-radio-group>

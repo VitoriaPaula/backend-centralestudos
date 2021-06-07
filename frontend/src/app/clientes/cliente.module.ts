@@ -6,4 +6,5 @@ export interface Cliente {
     DT_NASCIMENTO: Date;
     CD_PERMISSAO: number;
     PASS: string;
+    URL_IMAGEM?: string;
 }

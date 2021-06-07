@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   filtroCategoria: string = "";
   categorias: string[] = ["Frontend", "Backend", "Azure", "Mobile", "Security"];
   filtroSite: string = "";
-  sites: string[] = ["Udemy", "Microsoft"];
+  sites: string[] = ["Udemy", "Microsoft", "Cod3r"];
 
   constructor(public courseService: CourserService,
      private courseComponent: CoursesComponent,

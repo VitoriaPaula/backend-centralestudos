@@ -1,5 +1,5 @@
 import { ClienteService } from './clientes/cliente.service';
-import { RegisterComponent } from './clientes/register/register.component';
+import { RegisterComponent } from './register/register.component';
 import { ClienteAlterarComponent } from './clientes/configuracoes-cliente/cliente-alterar/cliente-alterar.component';
 import { LoginComponent } from './login/login.component';
 import { CourserService } from './courses/courses.service';
@@ -40,7 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     CoursesComponent,
     ConfiguracoesClienteComponent,
-    ClienteAlterarComponent
+    ClienteAlterarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
