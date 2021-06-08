@@ -6,12 +6,13 @@ import fs from 'fs';
 import smtpTransport from 'nodemailer-smtp-transport';
 
 class SendMailService{
+   
 
     private client: Transporter;
 
     constructor() {
 
-        let transporter = nodemailer.createTransport(smtpTransport({
+        let transporter = nodemailer.createTransport(({
             service: "gmail",
             host: "smtp.gmail.com",
              auth: {
@@ -28,6 +29,36 @@ class SendMailService{
         const templateFileContent = fs.readFileSync(welcomePath).toString("utf-8");
   
         const welcomeTemplateParse = handlebars.compile(templateFileContent);
+        const html = welcomeTemplateParse({name:Nome});
+
+
+
+      const message =  await this.client.sendMail({
+            to,
+            subject,
+            html,
+            from:"Central de Estudos Newslleter<noreply@cde.com.br>" 
+        })
+        console.log('Message sent: %s', message.messageId);
+        // Preview only available when sending through an Ethereal account
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+
+        this.client.sendMail(message, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+       });
+
+       
+    }
+    async executeWelcomeNewslleter(to: string, subject: string, Nome: string) {
+        const welcomeNesPath = resolve(__dirname,"..","views","email","welcomeNews.hbs");
+        const templateFileContent = fs.readFileSync(welcomeNesPath).toString("utf-8");
+  
+        const welcomeTemplateParse = handlebars.compile(templateFileContent);
+
         const html = welcomeTemplateParse({name:Nome});
 
 
