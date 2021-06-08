@@ -37,20 +37,11 @@ class SendMailService{
             to,
             subject,
             html,
-            from:"Central de Estudos Newslleter<noreply@cde.com.br>" 
+            from:"Central de Estudos Newslleter<cde.usjt@gmail.com>" 
         })
         console.log('Message sent: %s', message.messageId);
         // Preview only available when sending through an Ethereal account
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
-
-        this.client.sendMail(message, function(error, info){
-            if (error) {
-                console.log(error);
-            } else {
-                console.log("Email sent: " + info.response);
-            }
-       });
-
        
     }
     async executeWelcomeNewslleter(to: string, subject: string, Nome: string) {
@@ -61,25 +52,28 @@ class SendMailService{
 
         const html = welcomeTemplateParse({name:Nome});
 
-
-
       const message =  await this.client.sendMail({
             to,
             subject,
             html,
-            from:"Central de Estudos Newslleter<noreply@cde.com.br>" 
+            from:"Central de Estudos Newsletter<cde.usjt@gmail.com>" 
         })
         console.log('Message sent: %s', message.messageId);
         // Preview only available when sending through an Ethereal account
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+    }
 
-        this.client.sendMail(message, function(error, info){
-            if (error) {
-                console.log(error);
-            } else {
-                console.log("Email sent: " + info.response);
-            }
-       });
+
+    async execDefault(to:string, subject:string,body:string){
+        const message =  await this.client.sendMail({
+            to,
+            subject,
+            html:body,
+            from:"Central de Estudos Newsletter<cde.usjt@gmail.com>" 
+        })
+        console.log('Message sent: %s', message.messageId);
+        // Preview only available when sending through an Ethereal account
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
     }
 }
 

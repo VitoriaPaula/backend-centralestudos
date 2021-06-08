@@ -125,19 +125,19 @@ class CourseController {
     return res.json(courses);
   }
 
-  async listNew(categoria: string) {
-    var DATA = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
+  async listNew() {
+    var DATA = new Date(new Date().getTime().valueOf() - 1000 * 60 * 60 * 21);
+    console.log(DATA);
     const courseRepository = getCustomRepository(CoursesRepository);
     const courses = await courseRepository
       .createQueryBuilder("courses")
-      .where("courses.DS_CATEGORIA IN (:DS_CATEGORIAS)", {
-        DS_CATEGORIAS: categoria,
-      })
-      .andWhere("courses.CREATED_AT > :DATA", { DATA: DATA })
+      .where("courses.CREATED_AT > :DATA", { DATA: DATA })
       .getMany();
 
     return courses;
   }
+
+  
 }
 
 export { CourseController };

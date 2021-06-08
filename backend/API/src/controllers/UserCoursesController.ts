@@ -6,7 +6,7 @@ import sendEmail from '../services/sendEmail';
 import { UsersRepository } from '../repositories/UsersRepository';
 
 
-class CourseUsersController{
+class UserCoursesController{
     async create(req:Request,res:Response){
 
         const { CD_USUARIO } = req.body;
@@ -33,8 +33,8 @@ class CourseUsersController{
            console.log(userrepo);
        });
 
-        res.sendStatus(200);
+        return await res.sendStatus(200).json(user);
     }
 }
 
-export { CourseUsersController };
+export { UserCoursesController };
