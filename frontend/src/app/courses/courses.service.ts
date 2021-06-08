@@ -1,3 +1,4 @@
+import { Cliente } from './../clientes/cliente.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Newsletter } from './../newsletter/newsletter.module';
 import { Courses } from './courses.model';
@@ -71,7 +72,7 @@ export class CourserService {
 
   atualizaNewsletter(newsletter: Newsletter) {
     return this.httpClient
-      .post(this.baseUrl + 'email', newsletter)
+      .post(this.baseUrl + 'usuarioCurso', newsletter)
       .pipe(
         map(obj => obj),
         catchError(e => this.errorHandler(e, "Não foi possível atualizar newsletter!"))

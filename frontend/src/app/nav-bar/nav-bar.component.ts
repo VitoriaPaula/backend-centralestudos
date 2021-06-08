@@ -13,7 +13,6 @@ export class NavBarComponent implements OnInit {
 
   esconder = true;
   login = true;
-  config = false;
   radioValue = true;
   cliente: Cliente | null;
   filtroLinguagem: string = "";
@@ -57,10 +56,6 @@ export class NavBarComponent implements OnInit {
 
       this.courseComponent.ngCursosFiltrados(this.filtroLinguagem, this.filtroCategoria, this.filtroSite);
     }
-  }
-
-  onClickHide(): void {
-    this.config = !this.config;
   }
 
   isEmpty(str:string) {

@@ -33,7 +33,7 @@ class UserCoursesController{
            console.log(userrepo);
        });
 
-        return await res.sendStatus(200).json(user);
+       return res.json({"ok":true});
     }
 }
 

@@ -13,14 +13,15 @@ export class NewsletterComponent implements OnInit {
   public estaCarregando: boolean = false;
   categorias: FormGroup
   newsletter: Newsletter;
-  listaCategorias: Array<string> = [];
+  listaCategorias: string[] = [];
 
   constructor(fb: FormBuilder, public courseService: CourserService) {
     this.categorias = fb.group({
       backend: false,
       frontend: false,
       azure: false,
-      other: false
+      mobile: false,
+      arduino: false
     });
   }
 
@@ -42,9 +43,12 @@ export class NewsletterComponent implements OnInit {
     if (this.categorias.value.azure) {
       this.listaCategorias.push("Azure");
     }
-    // if (this.categorias.value.backend) {
-    //   this.listaCategorias.push("Backend");
-    // }
+    if (this.categorias.value.mobile) {
+      this.listaCategorias.push("Mobile");
+    }
+    if (this.categorias.value.arduino) {
+      this.listaCategorias.push("Arduino");
+    }
     
 
     console.log(this.listaCategorias);
@@ -52,6 +56,7 @@ export class NewsletterComponent implements OnInit {
       CD_USUARIO: window.localStorage.getItem("CD_USUARIO"),
       LS_CATEGORIAS: this.listaCategorias
     }
+    console.log(this.newsletter)
     this.courseService.atualizaNewsletter(this.newsletter)
       .subscribe(() => {
         this.courseService.showMessage("Newsletter atualizada com sucesso!", false)
