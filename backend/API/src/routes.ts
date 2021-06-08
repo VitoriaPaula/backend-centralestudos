@@ -26,6 +26,6 @@ router.get("/cursos/linguagem",courseController.listFilterLanguage);
 
 router.post("/cursos/filtro",courseController.listFilter);
 
-router.post("/email",sendEmailController.exec);
+//router.post("/email",sendEmailController.exec);
 
 export { router }

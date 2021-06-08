@@ -23,7 +23,7 @@ class UserController{
 
         await userRepository.save(user);
 
-        await sendEmail.execute(DS_EMAIL,"Bem vindo a central de estudos!")
+        await sendEmail.executeWelcome(DS_EMAIL,"Bem vindo a central de estudos!",NM_USUARIO)
 
         return response.status(201).json(user);
     }

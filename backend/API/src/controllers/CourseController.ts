@@ -125,14 +125,13 @@ class CourseController {
     return res.json(courses);
   }
 
-  async listNew(req: Request) {
-    var CATEGORIAS = req.body;
+  async listNew(categoria: string) {
     var DATA = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
     const courseRepository = getCustomRepository(CoursesRepository);
     const courses = await courseRepository
       .createQueryBuilder("courses")
       .where("courses.DS_CATEGORIA IN (:DS_CATEGORIAS)", {
-        DS_CATEGORIAS: CATEGORIAS,
+        DS_CATEGORIAS: categoria,
       })
       .andWhere("courses.CREATED_AT > :DATA", { DATA: DATA })
       .getMany();
