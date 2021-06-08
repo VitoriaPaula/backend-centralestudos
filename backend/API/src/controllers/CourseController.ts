@@ -2,7 +2,7 @@ import { getCustomRepository } from "typeorm";
 import { Request, Response, response, json } from "express";
 import { CoursesRepository } from "../repositories/CourseRepository";
 import { Course } from "../models/Course";
-import { microsoftApiService } from "../services/microsoftApiService"
+import { microsoftApiService } from "../services/microsoftApiService";
 class CourseController {
   async create(req: Request, res: Response) {
     const {
@@ -13,7 +13,7 @@ class CourseController {
       DS_IDIOMA,
       DS_CATEGORIA,
       DS_LINGUAGEM,
-      URL_IMAGEM
+      URL_IMAGEM,
     } = req.body;
 
     const courseRepository = getCustomRepository(CoursesRepository);
@@ -30,7 +30,7 @@ class CourseController {
       DS_IDIOMA,
       DS_CATEGORIA,
       DS_LINGUAGEM,
-      URL_IMAGEM
+      URL_IMAGEM,
     });
 
     await courseRepository.save(course);
@@ -123,6 +123,21 @@ class CourseController {
       .getMany();
 
     return res.json(courses);
+  }
+
+  async listNew(req: Request) {
+    var CATEGORIAS = req.body;
+    var DATA = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
+    const courseRepository = getCustomRepository(CoursesRepository);
+    const courses = await courseRepository
+      .createQueryBuilder("courses")
+      .where("courses.DS_CATEGORIA IN (:DS_CATEGORIAS)", {
+        DS_CATEGORIAS: CATEGORIAS,
+      })
+      .andWhere("courses.CREATED_AT > :DATA", { DATA: DATA })
+      .getMany();
+
+    return courses;
   }
 }
 
