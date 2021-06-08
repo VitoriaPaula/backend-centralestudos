@@ -33,7 +33,7 @@ class CourseUsersController{
            console.log(userrepo);
        });
 
-        res.sendStatus(200);
+       return res.json({"ok":true});
     }
 }
 
