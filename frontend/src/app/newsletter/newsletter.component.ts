@@ -20,7 +20,8 @@ export class NewsletterComponent implements OnInit {
       backend: false,
       frontend: false,
       azure: false,
-      other: false
+      mobile: false,
+      arduino: false
     });
   }
 
@@ -42,9 +43,12 @@ export class NewsletterComponent implements OnInit {
     if (this.categorias.value.azure) {
       this.listaCategorias.push("Azure");
     }
-    // if (this.categorias.value.backend) {
-    //   this.listaCategorias.push("Backend");
-    // }
+    if (this.categorias.value.mobile) {
+      this.listaCategorias.push("Mobile");
+    }
+    if (this.categorias.value.arduino) {
+      this.listaCategorias.push("Arduino");
+    }
     
 
     console.log(this.listaCategorias);
