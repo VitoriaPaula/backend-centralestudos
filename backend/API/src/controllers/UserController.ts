@@ -1,16 +1,13 @@
 import { Request, Response } from 'express';
 import { getCustomRepository, UpdateQueryBuilder } from 'typeorm';
-import { User } from '../models/User';
-import { UserCourses } from '../models/UserCourses';
-import { UserCoursesRepository } from '../repositories/UserCouresRepository';
 import { UsersRepository } from '../repositories/UsersRepository';
+import sendEmail from '../services/sendEmail';
 
 class UserController{
     async create(request: Request,response: Response){
         const { NM_USUARIO, DS_EMAIL,DS_CARGO,DT_NASCIMENTO,PASS}  = request.body;
 
-        const userCoursesRepository = getCustomRepository(UserCoursesRepository);
-
+        
         const userRepository = getCustomRepository(UsersRepository);
 
         const userAlreadyExists = await userRepository.findOne({
@@ -24,12 +21,9 @@ class UserController{
         var CD_PERMISSAO = 1;
         const user = userRepository.create({ NM_USUARIO, DS_EMAIL,DS_CARGO,DT_NASCIMENTO,CD_PERMISSAO,PASS});
 
-        
-
         await userRepository.save(user);
 
-        const userrepo = userCoursesRepository.create({CD_USUARIO:user.CD_USUARIO,DS_CATEGORIA:"teste"})
-        await userCoursesRepository.save(userrepo)
+        await sendEmail.execute(DS_EMAIL,"Bem vindo a central de estudos!")
 
         return response.status(201).json(user);
     }
