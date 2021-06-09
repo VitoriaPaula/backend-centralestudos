@@ -116,8 +116,8 @@ class CourseController {
       .where("courses.DS_CATEGORIA = :DS_CATEGORIA", {
         DS_CATEGORIA: CATEGORIA,
       })
-      .orWhere("courses.DS_SITE = :DS_SITE", { DS_SITE: SITE })
-      .orWhere("courses.DS_LINGUAGEM = :DS_LINGUAGEM", {
+      .andWhere("courses.DS_SITE = :DS_SITE", { DS_SITE: SITE })
+      .andWhere("courses.DS_LINGUAGEM = :DS_LINGUAGEM", {
         DS_LINGUAGEM: LINGUAGEM,
       })
       .getMany();
@@ -133,7 +133,7 @@ class CourseController {
       .createQueryBuilder("courses")
       .where("courses.CREATED_AT > :DATA", { DATA: DATA })
       .getMany();
-
+    //console.log(courses);
     return courses;
   }
 

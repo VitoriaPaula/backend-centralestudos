@@ -32,4 +32,6 @@ router.get("/cursos/linguagem",courseController.listFilterLanguage);
 router.post("/usuarioCurso",userCoursesController.create)
 router.post("/email",sendEmailController.execDefault);
 
+router.get("/teste",userCoursesController.servicoNewsletter)
+
 export { router }
