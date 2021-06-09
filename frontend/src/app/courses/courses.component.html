@@ -1,14 +1,16 @@
 <app-nav-bar></app-nav-bar>
-<h4><b> Cursos mais procurados </b></h4>
+<h4><b> Cursos </b></h4>
 <mat-spinner *ngIf="estaCarregando"></mat-spinner>
 <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="500px"  class="courses" *ngIf="cursos.length > 0 && !estaCarregando">
   <mat-grid-tile *ngFor="let curso of cursos" >
     <div class="block" >
+      <div class="first-part">
       <h2> {{ curso.NM_CURSO }} </h2>
       <div class="img">
         <img class="iconImg"
           src="{{ curso.URL_IMAGEM }}">
       </div>
+    </div>
       <div class="bottom-block">
         <p> {{ curso.DS_CURSO }} </p>
       </div>

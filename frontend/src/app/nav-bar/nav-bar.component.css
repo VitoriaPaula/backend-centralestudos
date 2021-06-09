@@ -48,6 +48,7 @@ span {
   max-height: 300px;
   max-width: 310px;
   display: inline;
+  margin: auto;
   padding-left: clamp(5px, 25vw, 100px);
 }
 
@@ -60,6 +61,7 @@ span {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin: auto;
 }
 
 .imgLogo {

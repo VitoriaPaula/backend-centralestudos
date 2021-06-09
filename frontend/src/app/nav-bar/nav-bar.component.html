@@ -24,17 +24,17 @@
                         {{ cliente.NM_USUARIO }}
                     </span>
                     <span weidth="2px"></span>
-                    <img mat-card-image class="imgIcon" src="./assets/LogoCheers.jpeg">
+                    <img mat-card-image class="imgIcon" src="./assets/iconeAmarelo.png">
                 </button>
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item routerLink="/config">
                         <mat-icon>settings</mat-icon>
                         Configurações
                     </button>
-                    <button mat-menu-item>
+                    <!--<button mat-menu-item>
                         <mat-icon>history</mat-icon>
                         Histórico
-                    </button>
+                    </button>-->
                     <button mat-menu-item (click)="removeToken()">
                         <mat-icon>exit_to_app</mat-icon>
                         Sair
