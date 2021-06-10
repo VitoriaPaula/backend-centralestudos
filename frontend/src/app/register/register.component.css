@@ -7,8 +7,8 @@
 .col-sm-5 {
   text-align: center;
   background-color: #0870bd;
-  height: 110vh;
-
+  height: 100vh;
+  width: 50%;
 }
 
 input[type="file"] {
@@ -39,8 +39,11 @@ mat-spinner {
 }
 
 .col-sm-7 {
-  background-color: #f5f4f4;
+  margin: auto;
+}
 
+.row {
+  background-color: #f5f4f4;
 }
 
 input[type=text],
@@ -72,10 +75,7 @@ input[type=email] {
 }
 
 .right {
-  margin-top: 30px;
-  margin-bottom: 10%;
-  margin-right: 5%;
-  margin-left: 8%;
+  margin: auto;
   font-weight: 425;
 
 }

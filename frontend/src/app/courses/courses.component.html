@@ -2,7 +2,7 @@
 <h4><b> Cursos </b></h4>
 <mat-spinner *ngIf="estaCarregando"></mat-spinner>
 <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="500px"  class="courses" *ngIf="cursos.length > 0 && !estaCarregando">
-  <mat-grid-tile *ngFor="let curso of cursos" >
+  <mat-grid-tile *ngFor="let curso of cursos | slice:0:60">
     <div class="block" >
       <div class="first-part">
       <h2> {{ curso.NM_CURSO }} </h2>
@@ -18,3 +18,8 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<mat-card *ngIf="apareceMsg">
+  <p class="mat-body-1" style="text-align: center;" >
+    Nenhum cliente cadastrado
+  </p>
+</mat-card>

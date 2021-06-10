@@ -14,6 +14,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   cursos: Courses[] = [];
   private cursosSubscription: Subscription;
   public estaCarregando = false;
+  apareceMsg = false;
   totalDeClientes: number = 0;
   totalDeClientesPorPagina: number = 2;
   opcoesTotalDeClientesPorPagina = [2, 5, 10];
@@ -55,6 +56,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   ngCursosFiltrados(linguagem: string, categoria: string, site: string): void {
     this.estaCarregando = true;
+    this.apareceMsg = false
     console.log("Chegou no Componente Cursos")
     this.courseService.getCursosFiltrados(linguagem, categoria, site);
     this.cursosSubscription = this.courseService
@@ -63,7 +65,14 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.cursos = dados.courses;
       console.log(this.cursos)
       this.estaCarregando = false;
+      if (this.cursos.length <= 0){
+        this.apareceMsg = true;
+      }
+      else {
+        this.apareceMsg = false
+      }
     });
+    
   }
 
 }
