@@ -11,17 +11,17 @@ import { Subject, Observable, Subscription, EMPTY } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class CourserService {
   private courses: Courses[] = [];
+  private categorias: string[] = [];
   private listaCoursesAtualizada = new Subject<{ courses: Courses[] }>();
 
-  baseUrl: string = "http://34.122.223.67:3333/";
-  //baseUrl: string = "http://localhost:3333/" //Local
+  //baseUrl: string = "http://34.122.223.67:3333/";
+  baseUrl: string = "http://localhost:3333/" //Local
 
   constructor(private httpClient: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
 
   getCourses(): Subscription {
-    //const parametros = `?pagesize=${pagesize}&page=${page}`;
     return this.httpClient
-      .get<Courses[]>(this.baseUrl + 'cursos')// + parametros)
+      .get<Courses[]>(this.baseUrl + 'cursos')
       .pipe(
         map((dados) => {
           return {
@@ -82,5 +82,18 @@ export class CourserService {
   errorHandler(e: any, msg: string): Observable<any> {
     this.showMessage(msg, true)
     return EMPTY
+  }
+
+  getCategoriasNewsletter(CD_USUARIO: string): Observable<string[]>{
+    console.log(CD_USUARIO);
+    return this.httpClient
+      .post<string[]>(this.baseUrl + "usuarioCurso/filtro", CD_USUARIO)
+      .pipe(
+        map(obj=> {
+          console.log(obj)
+          return obj
+        })//,
+        //catchError(e => this.errorHandler(e, "Não foi possível buscar suas opções de newsletter"))
+        );
   }
 }
