@@ -86,9 +86,10 @@ class UserCoursesController{
 
     async filterUser(req:Request,res:Response) {
         const { CD_USUARIO } = req.body;
+        //console.log(CD_USUARIO);
         const userCoursesRepository = getCustomRepository(UserCoursesRepository);
         const categorias = await userCoursesRepository.find({where:{CD_USUARIO:CD_USUARIO}});
-        return res.sendStatus(200).json(categorias);
+        return res.json(categorias);
     }
 }
 
