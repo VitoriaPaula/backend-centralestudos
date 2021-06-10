@@ -10,6 +10,7 @@ import { User } from '../models/User';
 
 
 class UserCoursesController{
+    
     async create(req:Request,res:Response){
 
         const { CD_USUARIO } = req.body;
@@ -81,6 +82,13 @@ class UserCoursesController{
         const categorias = await userCoursesRepository.find({where:{CD_USUARIO:CD_USUARIO}});
         return categorias;
 
+    }
+
+    async filterUser(req:Request,res:Response) {
+        const { CD_USUARIO } = req.body;
+        const userCoursesRepository = getCustomRepository(UserCoursesRepository);
+        const categorias = await userCoursesRepository.find({where:{CD_USUARIO:CD_USUARIO}});
+        return res.sendStatus(200).json(categorias);
     }
 }
 

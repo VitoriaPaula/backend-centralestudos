@@ -20,8 +20,6 @@ class CourseController {
 
     const nmt = NM_CURSO + "";
 
-    //console.log(nmt);
-
     const course = courseRepository.create({
       NM_CURSO,
       URL_CURSO,
@@ -43,26 +41,21 @@ class CourseController {
     const courseRepository = getCustomRepository(CoursesRepository);
     let URL_CURSO: string;
 
-    //console.log(svc);
-
     svc.getCourses(async (course: Course) => {
       URL_CURSO = course.URL_CURSO;
       const courseAlreadyExists = await courseRepository.findOne({ URL_CURSO });
 
-      if (courseAlreadyExists) {
-        //console.log("Course Already Exists");
-      } else {
+      if (!courseAlreadyExists) {
         await courseRepository.save(course);
-        //console.log("curso criado");
       }
     });
     return res.status(201);
   }
-  async list(req: Request, res: Response) {
+  async list(res: Response) {
     const courseRepository = getCustomRepository(CoursesRepository);
     const allCourses = await courseRepository.find();
 
-    return res.json(allCourses);
+    return res.sendStatus(200).json(allCourses);
   }
 
   async listFilterCategory(req: Request, res: Response) {
@@ -116,6 +109,7 @@ class CourseController {
       .where("courses.DS_CATEGORIA = :DS_CATEGORIA", {
         DS_CATEGORIA: CATEGORIA,
       })
+      .andWhere("courses.DS_SITE = IFNULL(:DS_SITE,courses.DS_SITE)", { DS_SITE: SITE })
       .andWhere("courses.DS_SITE = :DS_SITE", { DS_SITE: SITE })
       .andWhere("courses.DS_LINGUAGEM = :DS_LINGUAGEM", {
         DS_LINGUAGEM: LINGUAGEM,
