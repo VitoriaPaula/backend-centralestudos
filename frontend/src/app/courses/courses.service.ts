@@ -1,3 +1,4 @@
+import { CategoriaNewsletter } from './../newsletter/categoria-newsletter.module';
 import { Cliente } from './../clientes/cliente.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Newsletter } from './../newsletter/newsletter.module';
@@ -11,8 +12,9 @@ import { Subject, Observable, Subscription, EMPTY } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class CourserService {
   private courses: Courses[] = [];
-  private categorias: string[] = [];
+  private categorias: CategoriaNewsletter[] = [];
   private listaCoursesAtualizada = new Subject<{ courses: Courses[] }>();
+  private listaCategoriasAtualizada = new Subject<{ categorias: CategoriaNewsletter[] }>();
 
   //baseUrl: string = "http://34.122.223.67:3333/";
   baseUrl: string = "http://localhost:3333/" //Local
@@ -39,6 +41,11 @@ export class CourserService {
   getListaDeCursosAtualizadaObservable() {
     return this.listaCoursesAtualizada.asObservable();
   }
+
+  getListaDeCategoriaCursosAtualizadaObservable() {
+    return this.listaCategoriasAtualizada.asObservable();
+  }
+
   getCursosFiltrados(linguagem: string, categoria: string, site: string): Subscription {
     const data = { "CATEGORIA": categoria, "SITE": site, "LINGUAGEM": linguagem };
     // const params = encodeURIComponent(JSON.stringify(data));
@@ -84,16 +91,21 @@ export class CourserService {
     return EMPTY
   }
 
-  getCategoriasNewsletter(CD_USUARIO: string): Observable<string[]>{
-    console.log(CD_USUARIO);
+  getCategoriasNewsletter(CD_USUARIO: string): Subscription{
+    const dados = {"CD_USUARIO": CD_USUARIO};
     return this.httpClient
-      .post<string[]>(this.baseUrl + "usuarioCurso/filtro", CD_USUARIO)
+      .post<CategoriaNewsletter[]>(this.baseUrl + "usuarioCurso/filtro", dados)
       .pipe(
-        map(obj=> {
-          console.log(obj)
-          return obj
-        })//,
-        //catchError(e => this.errorHandler(e, "Não foi possível buscar suas opções de newsletter"))
-        );
+        map((dados) => {
+          return {
+            categorias: dados
+          }
+        }))
+        .subscribe((dados) => {
+        this.categorias = dados.categorias;
+        this.listaCategoriasAtualizada.next({
+          categorias: [...this.categorias]
+        });
+      });
   }
 }
