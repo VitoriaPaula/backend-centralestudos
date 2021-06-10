@@ -13,7 +13,7 @@ export class CourserService {
   private courses: Courses[] = [];
   private listaCoursesAtualizada = new Subject<{ courses: Courses[] }>();
 
-  baseUrl: string = "34.122.223.67:3333/";
+  baseUrl: string = "http://34.122.223.67:3333/";
   //baseUrl: string = "http://localhost:3333/" //Local
 
   constructor(private httpClient: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
