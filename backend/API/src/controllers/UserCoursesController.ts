@@ -34,7 +34,7 @@ class UserCoursesController{
        body.LS_CATEGORIAS.forEach(async (cat) =>  {
        const userrepo = userCoursesRepository.create({CD_USUARIO,DS_CATEGORIA:cat})
            await userCoursesRepository.save(userrepo)
-           console.log(userrepo);
+           //console.log(userrepo);
        });
 
        return res.json({"ok":true});
@@ -73,7 +73,7 @@ class UserCoursesController{
         const userCoursesRepository = getCustomRepository(UserCoursesRepository);
         const users = await userCoursesRepository
                     .createQueryBuilder("user_courses").select("DISTINCT CD_USUARIO").getRawMany();
-        console.log("listou");
+        //console.log("listou");
         
         return users;
     }

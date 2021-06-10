@@ -40,9 +40,9 @@ class SendMailService{
             html,
             from:"Central de Estudos<cde.usjt@gmail.com>" 
         })
-        console.log('Message sent: %s', message.messageId);
+        //onsole.log('Message sent: %s', message.messageId);
         // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+        //console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
        
     }
     async executeWelcomeNewslleter(to: string, subject: string, Nome: string) {
@@ -59,9 +59,9 @@ class SendMailService{
             html,
             from:"Central de Estudos Newsletter<cde.usjt@gmail.com>" 
         })
-        console.log('Message sent: %s', message.messageId);
+        //console.log('Message sent: %s', message.messageId);
         // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+        //console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
     }
 
 
@@ -72,9 +72,9 @@ class SendMailService{
             html:body,
             from:"Central de Estudos <cde.usjt@gmail.com>" 
         })
-        console.log('Message sent: %s', message.messageId);
+        //console.log('Message sent: %s', message.messageId);
         // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+        //console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
     }
     async execEmailNews(CD_USUARIO: string, CD_CURSO: string) {
         const userRepository = getCustomRepository(UsersRepository);
@@ -96,9 +96,9 @@ class SendMailService{
             html,
             from:"Central de Estudos <cde.usjt@gmail.com>" 
         })
-        console.log('Message sent: %s', message.messageId);
+        //console.log('Message sent: %s', message.messageId);
         // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+        //console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
     }
 }
 

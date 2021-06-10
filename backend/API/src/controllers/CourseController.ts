@@ -109,13 +109,12 @@ class CourseController {
       .where("courses.DS_CATEGORIA = :DS_CATEGORIA", {
         DS_CATEGORIA: CATEGORIA,
       })
-      .andWhere("courses.DS_SITE = IFNULL(:DS_SITE,courses.DS_SITE)", { DS_SITE: SITE })
-      .andWhere("courses.DS_SITE = :DS_SITE", { DS_SITE: SITE })
-      .andWhere("courses.DS_LINGUAGEM = :DS_LINGUAGEM", {
+      .orWhere("courses.DS_SITE = :DS_SITE", { DS_SITE: SITE })
+      .orWhere("courses.DS_LINGUAGEM = :DS_LINGUAGEM", {
         DS_LINGUAGEM: LINGUAGEM,
       })
       .getMany();
-
+      //console.log(courses)
     return res.json(courses);
   }
 
