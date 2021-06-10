@@ -1,5 +1,5 @@
 import { getCustomRepository } from "typeorm";
-import { Request, Response, response, json } from "express";
+import { Request, Response} from "express";
 import { CoursesRepository } from "../repositories/CourseRepository";
 import { Course } from "../models/Course";
 import { microsoftApiService } from "../services/microsoftApiService";
@@ -51,11 +51,11 @@ class CourseController {
     });
     return res.status(201);
   }
-  async list(res: Response) {
+  async list(req: Request, res: Response) {
     const courseRepository = getCustomRepository(CoursesRepository);
     const allCourses = await courseRepository.find();
 
-    return res.sendStatus(200).json(allCourses);
+    return res.json(allCourses);
   }
 
   async listFilterCategory(req: Request, res: Response) {
