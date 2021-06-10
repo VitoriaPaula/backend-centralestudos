@@ -3,9 +3,9 @@
 
 Semester project named Central de Estudos from 7º semester students at São Judas Tadeu University.
 
+The advertising animation - https://youtu.be/U1jLUq0ghvk
 
-
-The advertising animation - https://youtu.be/hbKOu_7V--E
+The slide apresentation - https://bit.ly/3ivd6VZ
 
 ## Authors
 
