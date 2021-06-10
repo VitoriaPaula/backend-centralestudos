@@ -1,10 +1,10 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Cliente } from './cliente.module';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { catchError, map } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { EMPTY, Observable, Subject, Subscription } from 'rxjs';
+import { EMPTY, Observable, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClienteService {
@@ -25,7 +25,6 @@ export class ClienteService {
         )
     }
 
-    //Mandar DS_EMAIL e PASS, 
     loginCliente(email: string, password: string): Observable<Cliente> {
         const data = { "DS_EMAIL": email, "PASS": password };
         return this.httpClient.post<Cliente>(

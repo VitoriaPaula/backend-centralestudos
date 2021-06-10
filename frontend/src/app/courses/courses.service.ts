@@ -1,9 +1,8 @@
 import { CategoriaNewsletter } from './../newsletter/categoria-newsletter.module';
-import { Cliente } from './../clientes/cliente.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Newsletter } from './../newsletter/newsletter.module';
 import { Courses } from './courses.model';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { map, catchError } from 'rxjs/operators';
@@ -35,7 +34,6 @@ export class CourserService {
         this.listaCoursesAtualizada.next({
           courses: [...this.courses]
         });
-        console.log(this.listaCoursesAtualizada)
       });
   }
   getListaDeCursosAtualizadaObservable() {
@@ -48,9 +46,6 @@ export class CourserService {
 
   getCursosFiltrados(linguagem: string, categoria: string, site: string): Subscription {
     const data = { "CATEGORIA": categoria, "SITE": site, "LINGUAGEM": linguagem };
-    // const params = encodeURIComponent(JSON.stringify(data));
-    // const url = `${this.baseUrl}cursos/filtro?data=${params}`
-    // console.log("Chegou no cursos service    " + url)
     return this.httpClient
       .post<Courses[]>(this.baseUrl + "cursos/filtro", data)
       .pipe(
@@ -64,7 +59,6 @@ export class CourserService {
         this.listaCoursesAtualizada.next({
           courses: [...this.courses]
         });
-        console.log(this.listaCoursesAtualizada)
       });
   }
 

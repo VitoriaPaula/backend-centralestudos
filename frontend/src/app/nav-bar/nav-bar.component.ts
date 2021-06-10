@@ -31,7 +31,6 @@ export class NavBarComponent implements OnInit {
     if(nome == undefined || nome === null ){
       this.login = true;
     }else {
-      console.log(nome);
       this.login = false;
       this.cliente = {
         CD_USUARIO: window.localStorage.getItem("CD_USUARIO"),
@@ -50,10 +49,6 @@ export class NavBarComponent implements OnInit {
     if (this.isEmpty(this.filtroLinguagem) && this.isEmpty(this.filtroCategoria) && this.isEmpty(this.filtroSite)) {
       this.esconder = !this.esconder;
     } else {
-      console.log(this.filtroLinguagem);
-      console.log(this.filtroCategoria);
-      console.log(this.filtroSite);
-
       this.courseComponent.ngCursosFiltrados(this.filtroLinguagem, this.filtroCategoria, this.filtroSite);
     }
   }

@@ -2,7 +2,7 @@ import { Courses } from './courses.model';
 import { CourserService } from './courses.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-courses',

@@ -39,13 +39,10 @@ export class NewsletterComponent implements OnInit {
      this.courseService.getCategoriasNewsletter(window.localStorage.getItem("CD_USUARIO"));
     this.categoriasSubscription = this.courseService.getListaDeCategoriaCursosAtualizadaObservable()
       .subscribe((dados)  => {
-        console.log(dados)
         this.listaCategorias = dados.categorias
         
-        console.log(this.listaCategorias)
         this.listaCategorias.forEach((obj) => {
           const a = obj.DS_CATEGORIA;
-          console.log(obj.DS_CATEGORIA)
           if (a == 'Backend') {
             this.backend = true;
           }
@@ -71,12 +68,10 @@ export class NewsletterComponent implements OnInit {
           arduino: this.arduino
         });
       })
-     
   }
 
   selecionaCategoria(): void {
     this.estaCarregando = true;
-    console.log(this.categorias.value)
 
     this.listaCategoriasEnviar = [];
 
@@ -97,12 +92,10 @@ export class NewsletterComponent implements OnInit {
     }
 
 
-    console.log(this.listaCategorias);
     this.newsletter = {
       CD_USUARIO: window.localStorage.getItem("CD_USUARIO"),
       LS_CATEGORIAS: this.listaCategoriasEnviar
     }
-    console.log(this.newsletter)
     this.courseService.atualizaNewsletter(this.newsletter)
       .subscribe(() => {
         this.courseService.showMessage("Newsletter atualizada com sucesso!", false)
